@@ -1,0 +1,7 @@
+{
+    "env": {
+        "MONGO_USER": "admin",
+        "MONGO_PASSWORD": "Needforspeed4",
+        "MONGO_DB": "Graphql_jwt"
+    }
+}
