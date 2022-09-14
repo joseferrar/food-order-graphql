@@ -1,7 +1,7 @@
-# GraphQL + React Event Booking API
+# GraphQL + React Native
 This code url: [https://github.com/joseferrar/graphql-notes-app]
 
-Learn how to build a GraphQL API (with Node.js) and a React.js frontend from scratch in this series.
+Food order app using react native + graphql
 
 # Usage
 
