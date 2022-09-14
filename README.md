@@ -12,5 +12,9 @@ npm install
 
 Run the server
 ```sh
-npm start
+Android:
+react-native run-android
+
+Ios:
+react-native run-ios
 ```
