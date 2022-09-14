@@ -1,5 +1,5 @@
 # GraphQL + React Native
-This code url: [https://github.com/joseferrar/graphql-notes-app]
+This code url: [https://github.com/joseferrar/food-order-graphql.git]
 
 Food order app using react native + graphql
 
