@@ -26,7 +26,7 @@ module.exports = {
       price: args.cartInput.price,
       imageUrl: args.cartInput.imageUrl,
       restaurant: args.cartInput.restaurant,
-      qty: 1,
+      cartQuantity: args.cartInput.cartQuantity,
     });
     try {
       await cart.save();

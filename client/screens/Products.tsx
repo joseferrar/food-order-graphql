@@ -8,10 +8,13 @@ import {useQuery, useMutation} from '@apollo/client';
 import ProductList from '../components/Lists/ProductList';
 import ProductCard from '../components/Cards/ProductCard';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {addToCart} from '../features/reducers/cartSlice';
+import { Badge } from 'react-native-paper';
+
 
 const Product = ({navigation, route}: HomeScreenNavigationProp) => {
+  const cart = useSelector((state: any) => state.cart);
   const {user}: any = useAuth();
   const {params}: any = route;
   const {loading, data} = useQuery(GET_PRODUCT);
@@ -32,6 +35,7 @@ const Product = ({navigation, route}: HomeScreenNavigationProp) => {
               color="#000"
               onPress={() => navigation.navigate('Cart')}
             />
+            <Badge>{cart?.cartItems?.length}</Badge>
           </View>
         </>
       ),
@@ -41,6 +45,7 @@ const Product = ({navigation, route}: HomeScreenNavigationProp) => {
   const dispatch = useDispatch();
   const handleAddToCart = (product: any) => {
     dispatch(addToCart(product));
+    Alert.alert('Cart Added !!!')
   };
 
   return (
@@ -61,15 +66,16 @@ const Product = ({navigation, route}: HomeScreenNavigationProp) => {
                 if (!user) {
                   Alert.alert('your must be login');
                 } else {
-                  // var addData = {
-                  //   product_name: item?.product_name,
-                  //   product_desc: item?.product_desc,
-                  //   price: item?.price,
-                  //   imageUrl: item?.imageUrl,
-                  //   restaurant: item?.restaurant,
-                  // };
+                  var addData = {
+                    product_name: item?.product_name,
+                    product_desc: item?.product_desc,
+                    price: item?.price,
+                    imageUrl: item?.imageUrl,
+                    restaurant: item?.restaurant,
+                    cartQuantity: 4,
+                  };
                   // await addCart({variables: {cartInput: addData}});
-                  // addToCart(addData);
+
                   handleAddToCart(item);
                 }
               }}

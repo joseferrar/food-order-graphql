@@ -22,7 +22,7 @@ const cartSchema = new Schema({
   restaurant: {
     type: String,
   },
-  qty: {
+  cartQuantity: {
     type: Number,
   },
   creator: {

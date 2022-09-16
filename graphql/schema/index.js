@@ -45,7 +45,7 @@ type Cart {
   price: Int!
   imageUrl: String!
   restaurant: String
-  qty: Int!
+  cartQuantity: Int!
 }
 
 input RestaurantInput {
@@ -65,7 +65,7 @@ input CartInput {
   price: Int!
   imageUrl: String!
   restaurant: String
-  qty: Int
+  cartQuantity: Int
 }
 
 input ProductInput {

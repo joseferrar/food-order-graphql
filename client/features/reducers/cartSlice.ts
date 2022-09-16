@@ -19,6 +19,26 @@ const cartSlice = createSlice({
       if (existingIndex >= 0) {
         state.cartItems[existingIndex] = {
           ...state.cartItems[existingIndex],
+          cartQuantity: state.cartItems[existingIndex].cartQuantity,
+        };
+        console.info('Increased product quantity');
+      } else {
+        let tempProductItem = {...action.payload, cartQuantity: 1};
+        state.cartItems.push(tempProductItem);
+        console.log('Product added to cart');
+        AsyncStorage.setItem('cartItems', JSON.stringify(tempProductItem));
+      }
+      AsyncStorage.setItem('cartItems', JSON.stringify(state.cartItems));
+    },
+
+    IncreseCart(state, action) {
+      const existingIndex = state.cartItems.findIndex(
+        (item: any) => item.product_name === action.payload.product_name,
+      );
+
+      if (existingIndex >= 0) {
+        state.cartItems[existingIndex] = {
+          ...state.cartItems[existingIndex],
           cartQuantity: state.cartItems[existingIndex].cartQuantity + 1,
         };
         console.info('Increased product quantity');
@@ -98,7 +118,13 @@ const cartSlice = createSlice({
   },
 });
 
-export const {addToCart, decreaseCart, removeFromCart, getTotals, clearCart} =
-  cartSlice.actions;
+export const {
+  addToCart,
+  decreaseCart,
+  removeFromCart,
+  getTotals,
+  clearCart,
+  IncreseCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
