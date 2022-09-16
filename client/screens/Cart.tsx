@@ -95,9 +95,6 @@ const Cart = () => {
       <Card style={{marginTop: 50}}>
         <Text style={styles.total}>Total - {Total}</Text>
       </Card>
-      <Button onPress={DataStore}>
-        <Text style={styles.plus}>Buy</Text>
-      </Button>
     </View>
   );
 };
