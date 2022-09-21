@@ -9,24 +9,21 @@ module.exports = {
   },
 
   addCart: async (args, req) => {
-    if (!req.isAuth) {
-      throw new Error("Unauthenticated!");
-    }
-    const { cartInput } = req.body.variables;
+    // if (!req.isAuth) {
+    //   throw new Error("Unauthenticated!");
+    // }
+    // const { cartInput } = req.body.variables;
+console.log(args);
+const { cartInput } = args;
 
-    var cartValid = await Cart.findOne({
-      product_name: cartInput.product_name,
-    });
-    if (cartValid) {
-      throw new Error("alreay in your cart");
-    }
+    // var cartValid = await Cart.findOne({
+    //   product_name: cartInput.product_name,
+    // });
+    // if (cartValid) {
+    //   throw new Error("alreay in your cart");
+    // }
     const cart = new Cart({
-      product_name: args.cartInput.product_name,
-      product_desc: args.cartInput.product_desc,
-      price: args.cartInput.price,
-      imageUrl: args.cartInput.imageUrl,
-      restaurant: args.cartInput.restaurant,
-      cartQuantity: args.cartInput.cartQuantity,
+      carts: cartInput,
     });
     try {
       await cart.save();

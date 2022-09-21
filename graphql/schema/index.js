@@ -82,6 +82,9 @@ type RootQuery {
   products: [Product!]!
   carts: [Cart!]!
 }
+type CreateUsersPayload {
+  carts: [Cart]
+}
 
 type RootMutation {
     createRestaurant(restaurantInput: RestaurantInput): Restaurant
@@ -89,7 +92,8 @@ type RootMutation {
     createProduct(productInput: ProductInput): Product
     login(email: String!, password: String!): AuthData!
     getUser(userId: ID!): User!
-    addCart(cartInput: CartInput): Cart
+    addCart(cartInput: [CartInput!]!): CreateUsersPayload
+
     deleteCart(cartId: ID!): Cart!
     updateCart(cartId: ID): Cart!
 }

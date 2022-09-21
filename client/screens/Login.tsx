@@ -45,6 +45,7 @@ const Login = props => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.loginText}>Login</Text>
       <Input
         label={'Email'}
         value={formik.values.email}
@@ -104,5 +105,11 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     width: 300,
     marginTop: 20,
+  },
+  loginText: {
+    color: '#000',
+    fontWeight: 'bold',
+    fontSize: 50,
+    marginBottom: 40,
   },
 });

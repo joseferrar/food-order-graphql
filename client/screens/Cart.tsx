@@ -5,7 +5,12 @@ import {useMutation, useQuery} from '@apollo/client';
 import {GET_CART, UPDATE_CART, ADD_CART} from '../graphql/queries';
 import {useSelector, useDispatch} from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {addToCart, decreaseCart, IncreseCart} from '../features/reducers/cartSlice';
+import {
+  addToCart,
+  decreaseCart,
+  IncreseCart,
+} from '../features/reducers/cartSlice';
+import {RadiusButton} from '../components/Buttons/Buttons';
 
 const Cart = () => {
   const cart = useSelector((state: any) => state.cart);
@@ -13,7 +18,7 @@ const Cart = () => {
   console.log(cart);
   const {loading, data, error} = useQuery(GET_CART);
   const [addCart, {loading: updating, data: adddata, error: updateError}] =
-    useMutation(ADD_CART, {refetchQueries: [{query: GET_CART}]});
+    useMutation(ADD_CART);
   const Total = cart?.cartItems?.reduce(
     (a: any, c: any) => a + c.cartQuantity * c.price,
     0,
@@ -32,7 +37,24 @@ const Cart = () => {
   //   console.log(qtyupdate);
   //   updateCart({variables: qtyupdate});
   // }
-
+  const carts = [
+    {
+      product_name: 'nato',
+      product_desc: '5435345',
+      price: 434,
+      cartQuantity: 3,
+      imageUrl: 'dfgsd',
+      restaurant: 'sdsfd',
+    },
+    {
+      product_name: 'sai',
+      product_desc: '5435345',
+      price: 434,
+      cartQuantity: 3,
+      imageUrl: 'dfgsd',
+      restaurant: 'sdsfd',
+    },
+  ];
   const handleAddToCart = (product: any) => {
     dispatch(addToCart(product));
     AsyncStorage.setItem('allItems', JSON.stringify(product));
@@ -46,10 +68,12 @@ const Cart = () => {
     dispatch(IncreseCart(product));
   };
   console.log('cart', Total);
-  const proObj = {
-    carts: cart?.cartItems,
-    total: Total,
-  };
+  const proObj = [
+    {
+      carts: cart?.cartItems,
+      total: Total,
+    },
+  ];
   console.log(proObj);
   const input = {
     product_name: 'jose',
@@ -61,11 +85,10 @@ const Cart = () => {
   };
 
   const DataStore = () => {
-    // addCart({
-    //   variables: {input: input},
-    // });
-    console.log('dsfdsfsd', adddata);
+    addCart({variables: {cartInput: cart?.cartItems}});
+    console.log('dsfdsfsd', cart?.cartItems);
   };
+  console.log('dsfdsfsd', cart?.cartItems);
   return (
     <View>
       {cart?.cartItems?.map((item, i) => (
@@ -95,6 +118,11 @@ const Cart = () => {
       <Card style={{marginTop: 50}}>
         <Text style={styles.total}>Total - {Total}</Text>
       </Card>
+      <RadiusButton
+        title={`Buy Now - ${cart?.cartItems?.length}`}
+        onPress={DataStore}
+        style={styles.login}
+      />
     </View>
   );
 };
@@ -136,5 +164,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#000',
     marginTop: 'auto',
+  },
+  login: {
+    backgroundColor: 'red',
+    width: 300,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 30,
   },
 });

@@ -28,7 +28,7 @@ export default ProductList;
 
 const styles = StyleSheet.create({
   list: {
-    flexDirection: 'row',
+ 
     height: '100%',
   },
 });

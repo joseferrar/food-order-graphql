@@ -29,12 +29,13 @@ export default ProductCard;
 
 const styles = StyleSheet.create({
   card: {
-    width: 200,
+    width: 350,
     borderRadius: 15,
-    marginLeft: 10,
+    marginLeft: 20,
+    marginTop: 12,
   },
   image: {
-    width: 200,
+    width: 350,
     height: 150,
     resizeMode: 'cover',
   },

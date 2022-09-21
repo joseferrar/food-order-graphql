@@ -15,7 +15,7 @@ import NetworkLogger from 'react-native-network-logger';
 import store from './features/store';
 
 const httpLink = createHttpLink({
-  uri: 'http://192.168.7.49:5000/graphql',
+  uri: 'http://192.168.7.35:5000/graphql',
 });
 
 const authLink = setContext(async (_, {headers}): Promise<any> => {

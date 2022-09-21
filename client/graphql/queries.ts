@@ -51,13 +51,15 @@ const GET_RESTAURANT = gql`
 `;
 
 const ADD_CART = gql`
-  mutation Mutation($cartInput: CartInput) {
+  mutation addCart($cartInput: [CartInput!]!) {
     addCart(cartInput: $cartInput) {
-      product_name
-      qty
+      carts {
+        product_name
+      }
     }
   }
 `;
+
 
 const GET_CART = gql`
   query {

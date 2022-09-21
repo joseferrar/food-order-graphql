@@ -43,6 +43,7 @@ const Register = (props: HomeScreenNavigationProp) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.loginText}>Register</Text>
       <Input
         label={'Username'}
         value={formik.values.username}
@@ -110,5 +111,11 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     width: 300,
     marginTop: 20,
+  },
+  loginText: {
+    color: '#000',
+    fontWeight: 'bold',
+    fontSize: 50,
+    marginBottom: 40,
   },
 });
