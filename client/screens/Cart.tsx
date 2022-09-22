@@ -37,24 +37,26 @@ const Cart = () => {
   //   console.log(qtyupdate);
   //   updateCart({variables: qtyupdate});
   // }
-  const carts = [
-    {
-      product_name: 'nato',
-      product_desc: '5435345',
-      price: 434,
-      cartQuantity: 3,
-      imageUrl: 'dfgsd',
-      restaurant: 'sdsfd',
-    },
-    {
-      product_name: 'sai',
-      product_desc: '5435345',
-      price: 434,
-      cartQuantity: 3,
-      imageUrl: 'dfgsd',
-      restaurant: 'sdsfd',
-    },
-  ];
+  // const carts = [
+  //   {
+  //     product_name: 'dsfsf',
+  //     product_desc: '5435345',
+  //     price: 434,
+  //     cartQuantity: 3,
+  //     imageUrl: 'dfgsd',
+  //     restaurant: 'sdsfd',
+  //     __typename: 'product',
+  //   },
+  //   {
+  //     product_name: 'sai',
+  //     product_desc: '5435345',
+  //     price: 434,
+  //     cartQuantity: 3,
+  //     imageUrl: 'dfgsd',
+  //     restaurant: 'sdsfd',
+  //     __typename: 'product',
+  //   },
+  // ];
   const handleAddToCart = (product: any) => {
     dispatch(addToCart(product));
     AsyncStorage.setItem('allItems', JSON.stringify(product));
@@ -75,20 +77,23 @@ const Cart = () => {
     },
   ];
   console.log(proObj);
-  const input = {
-    product_name: 'jose',
-    product_desc: '5435345',
-    price: 434,
-    cartQuantity: 3,
-    imageUrl: 'dfgsd',
-    restaurant: 'sdsfd',
-  };
 
   const DataStore = () => {
-    addCart({variables: {cartInput: cart?.cartItems}});
-    console.log('dsfdsfsd', cart?.cartItems);
+    cart?.cartItems.map((item: any) => {
+      console.log(item);
+      const newDog = Object.keys(item).reduce((accumulator: any, key) => {
+        if (key !== '__typename') {
+          accumulator[key] = item[key];
+        }
+        return accumulator;
+      }, {});
+
+      console.log(newDog);
+      const carts = [newDog];
+      addCart({variables: {cartInput: carts, total: Total}});
+    });
   };
-  console.log('dsfdsfsd', cart?.cartItems);
+
   return (
     <View>
       {cart?.cartItems?.map((item, i) => (

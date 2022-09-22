@@ -49,11 +49,10 @@ const GET_RESTAURANT = gql`
     }
   }
 `;
-
 const ADD_CART = gql`
-  mutation addCart($cartInput: [CartInput!]!) {
-    addCart(cartInput: $cartInput) {
-      carts {
+  mutation addOrder($cartInput: [CartInput!]!, $total: Int) {
+    addOrder(cartInput: $cartInput, total: $total) {
+      order {
         product_name
       }
     }

@@ -18,7 +18,7 @@ const Product = ({navigation, route}: HomeScreenNavigationProp) => {
   const {user}: any = useAuth();
   const {params}: any = route;
   const {loading, data} = useQuery(GET_PRODUCT);
-  const [addCart, {error}] = useMutation(ADD_CART);
+  const [addOrder, {error}] = useMutation(ADD_CART);
   console.log('that user', data);
 
   const dd = user ? 'hello' : 'no';

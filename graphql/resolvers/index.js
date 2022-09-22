@@ -1,12 +1,12 @@
 const authResolver = require("./auth");
 const restaurantResolver = require("./restaurant");
 const productResolver = require("./product");
-const cartResolver = require("./cart");
+const orderResolver = require("./order");
 const rootResolver = {
   ...authResolver,
   ...restaurantResolver,
   ...productResolver,
-  ...cartResolver,
+  ...orderResolver,
 };
 
 module.exports = rootResolver;
