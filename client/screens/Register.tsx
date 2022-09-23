@@ -33,7 +33,7 @@ const Register = (props: HomeScreenNavigationProp) => {
       await register({variables: {userInput: Data}})
         .then(res => {
           console.log(res);
-          navigation.replace('Restaurant');
+          navigation.navigate('Login');
         })
         .catch(error => {
           console.error('error', error);

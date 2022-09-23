@@ -59,7 +59,6 @@ const ADD_CART = gql`
   }
 `;
 
-
 const GET_CART = gql`
   query {
     carts {

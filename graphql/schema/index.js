@@ -21,6 +21,9 @@ type User {
   username: String!
   email: String!
   password: String
+  mobile: Int
+  address: String
+  city: String
 }
 
 type AuthData {
@@ -54,9 +57,13 @@ input RestaurantInput {
 }
 
 input UserInput {
-  username: String!
-  email: String!
-  password: String!
+  userId: ID
+  username: String
+  email: String
+  password: String
+  mobile: Int
+  address: String
+  city: String
 }
 
 input CartInput {
@@ -94,6 +101,7 @@ type RootMutation {
     createProduct(productInput: ProductInput): Product
     login(email: String!, password: String!): AuthData!
     getUser(userId: ID!): User!
+    updateUser(userInput: UserInput): User
     addOrder(cartInput: [CartInput!]!, total: Int): CreateUsersPayload
 
     deleteCart(cartId: ID!): Cart!

@@ -16,6 +16,9 @@ module.exports = {
         username: args.userInput.username,
         email: args.userInput.email,
         password: hashedPassword,
+        mobile: 0,
+        address: "",
+        city: "",
       });
 
       const result = await user.save();
@@ -45,9 +48,23 @@ module.exports = {
   },
 
   getUser: async (args, req) => {
-    if (!req.isAuth) {
-      throw new Error("You are not authenticated");
-    }
+    // if (!req.isAuth) {
+    //   throw new Error("You are not authenticated");
+    // }
     return await User.findById(args.userId);
+  },
+
+  updateUser: async (args, req) => {
+    // if (!req.isAuth) {
+    //   throw new Error("Unauthenticated!");
+    // }
+
+    console.log(args.userInput);
+    return await User.findByIdAndUpdate(args.userInput.userId, {
+      username: args.userInput.username,
+      mobile: args.userInput.mobile,
+      address: args.userInput.address,
+      city: args.userInput.city,
+    });
   },
 };
