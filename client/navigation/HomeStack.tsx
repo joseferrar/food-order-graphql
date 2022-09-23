@@ -7,6 +7,7 @@ import Restaurant from '../screens/Restaurant';
 import Login from '../screens/Login';
 import Register from '../screens/Register';
 import Cart from '../screens/Cart';
+import Order from '../screens/Order';
 
 const HomeStack = createNativeStackNavigator<HomeStackNavigatorParamList>();
 
@@ -34,6 +35,12 @@ const HomeStackNavigator = () => {
       <HomeStack.Screen
         name="Details"
         component={Details}
+        options={{headerShown: false}}
+      />
+
+      <HomeStack.Screen
+        name="Order"
+        component={Order}
         options={{headerShown: false}}
       />
     </HomeStack.Navigator>

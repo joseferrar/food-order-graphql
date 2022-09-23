@@ -8,6 +8,7 @@ export type HomeStackNavigatorParamList = {
   Login: undefined;
   Register: undefined;
   Cart: undefined;
+  Order: undefined;
   Details: {
     product_name: string;
     product_desc: string;

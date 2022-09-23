@@ -11,8 +11,9 @@ import {
   IncreseCart,
 } from '../features/reducers/cartSlice';
 import {RadiusButton} from '../components/Buttons/Buttons';
+import {HomeScreenNavigationProp} from '../navigation/types';
 
-const Cart = () => {
+const Cart = ({navigation, route}: HomeScreenNavigationProp) => {
   const cart = useSelector((state: any) => state.cart);
   const dispatch = useDispatch();
   console.log(cart);
@@ -79,19 +80,19 @@ const Cart = () => {
   console.log(proObj);
 
   const DataStore = () => {
-    cart?.cartItems.map((item: any) => {
-      console.log(item);
-      const newDog = Object.keys(item).reduce((accumulator: any, key) => {
-        if (key !== '__typename') {
-          accumulator[key] = item[key];
-        }
-        return accumulator;
-      }, {});
-
-      console.log(newDog);
-      const carts = [newDog];
-      addCart({variables: {cartInput: carts, total: Total}});
-    });
+    navigation.navigate('Order', {items: cart?.cartItems});
+    // cart?.cartItems.map((item: any) => {
+    //   console.log(item);
+    //   const newDog = Object.keys(item).reduce((accumulator: any, key) => {
+    //     if (key !== '__typename') {
+    //       accumulator[key] = item[key];
+    //     }
+    //     return accumulator;
+    //   }, {});
+    //   console.log(newDog);
+    //   const carts = [newDog];
+    //   addCart({variables: {cartInput: carts, total: Total}});
+    // });
   };
 
   return (
